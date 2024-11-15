@@ -1,74 +1,136 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+interface Contacto {
+  id: string;
+  nombre: string;
+  avatarUrl: string;
+  status: string;
 }
 
+const contactos: Contacto[] = [
+  {
+    id: "1",
+    nombre: "Jose",
+    avatarUrl:
+      "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    status: "últ. vez recientemente",
+  },
+  {
+    id: "2",
+    nombre: "Eleazar",
+    avatarUrl: "https://img.lovepik.com/element/45006/1283.png_860.png",
+    status: "últ. vez recientemente",
+  },
+  {
+    id: "3",
+    nombre: "Elian Buzo",
+    avatarUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYPRLSISP2uoEdGxNPVFrz02gI2KWiJ_VwNA&s",
+    status: "últ. vez recientemente",
+  },
+  {
+    id: "4",
+    nombre: "Mario",
+    avatarUrl: "https://img.lovepik.com/element/45006/1283.png_860.png",
+    status: "últ. vez hace mucho tiempo",
+  },
+  {
+    id: "5",
+    nombre: "Olan",
+    avatarUrl: "https://img.lovepik.com/element/45006/1283.png_860.png",
+    status: "últ. vez hace mucho tiempo",
+  },
+];
+
+const ContactosScreen: React.FC = () => {
+  const [searchText, setSearchText] = useState<string>("");
+  const [filteredContactos, setFilteredContactos] =
+    useState<Contacto[]>(contactos);
+
+  const handleSearch = (text: string) => {
+    setSearchText(text);
+    if (text) {
+      const filtered = contactos.filter((contacto) =>
+        contacto.nombre.toLowerCase().includes(text.toLowerCase())
+      );
+      setFilteredContactos(filtered);
+    } else {
+      setFilteredContactos(contactos);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.searchBar}
+        placeholder="Buscar"
+        placeholderTextColor="#888"
+        value={searchText}
+        onChangeText={handleSearch}
+      />
+      <FlatList
+        data={filteredContactos}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity>
+            <View style={styles.contactContainer}>
+              <Image source={{ uri: item.avatarUrl }} style={styles.avatar} />
+              <View>
+                <Text style={styles.contactName}>{item.nombre}</Text>
+                <Text style={styles.contactStatus}>{item.status}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: "#000",
+    paddingTop: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  searchBar: {
+    backgroundColor: "#333",
+    color: "#fff",
+    padding: 10,
+    margin: 10,
+    borderRadius: 5,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  contactContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#444",
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 15,
+  },
+  contactName: {
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#fff",
+  },
+  contactStatus: {
+    fontSize: 14,
+    color: "#888",
   },
 });
+
+export default ContactosScreen;

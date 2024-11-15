@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nombre": "Jose Velasco",
+    "avatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "mensaje": "Hola, ¿cómo estás?",
+    "hora": "22:01 PM"
+  },
+  {
+    "id": 2,
+    "nombre": "Elian Buzo",
+    "avatarUrl": "https://cdn4.iconfinder.com/data/icons/pop-avatars/1000/animals_accounts_avatars___user_account_avatar_animal_pet_cat_feline-128.png",
+    "mensaje": "¡Todo bien! ¿Y tú?",
+    "hora": "22:03 PM"
+  },
+  {
+    "id": 3,
+    "nombre": "Mario ",
+    "avatarUrl": "https://cdn4.iconfinder.com/data/icons/pop-avatars/1000/animals_accounts_avatars___user_account_avatar_duck_farm_animal_bird-128.png",
+    "mensaje": "Órale, ¡hace mucho que no hablamos!",
+    "hora": "22:05 PM"
+  },
+  {
+    "id": 4,
+    "nombre": "Fernanda Olan",
+    "avatarUrl": "https://cdn4.iconfinder.com/data/icons/pop-avatars/1000/animals_accounts_avatars___user_account_avatar_duck_farm_animal_bird-128.png",
+    "mensaje": "Órale, ¡hace mucho que no hablamos!",
+    "hora": "22:05 PM"
+  },
+  {
+    "id": 5,
+    "nombre": "Eleazar",
+    "avatarUrl": "https://cdn4.iconfinder.com/data/icons/pop-avatars/1000/animals_accounts_avatars___user_account_avatar_duck_farm_animal_bird-128.png",
+    "mensaje": "Órale, ¡hace mucho que no hablamos!",
+    "hora": "22:05 PM"
+  }
+]

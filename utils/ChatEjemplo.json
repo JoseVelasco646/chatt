@@ -1,0 +1,28 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "sender": "Jose Velasco",
+      "message": "Hola, ¿cómo estás?",
+      "timestamp": "22:01 PM"
+    },
+    {
+      "id": 2,
+      "sender": "Maria Fernandez",
+      "message": "¡Todo bien! ¿Y tú?",
+      "timestamp": "22:03 PM"
+    },
+    {
+      "id": 3,
+      "sender": "Jose Velasco",
+      "message": "Todo bien, gracias por preguntar.",
+      "timestamp": "22:05 PM"
+    },
+    {
+      "id": 4,
+      "sender": "Jose Velasco",
+      "message": "Todo bien, gracias por preguntar.",
+      "timestamp": "22:05 PM"
+    }
+  ]
+}
