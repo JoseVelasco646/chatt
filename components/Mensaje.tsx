@@ -23,6 +23,7 @@ const MensajeCard: React.FC<MensajeCardProps> = ({
           <Text style={styles.time}>{hora}</Text>
         </View>
         <Text style={styles.message}>{mensaje}</Text>
+        <Text style={styles.checkIcon}>✓✓</Text>
       </View>
     </View>
   );
@@ -31,16 +32,18 @@ const MensajeCard: React.FC<MensajeCardProps> = ({
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "center",
     padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#222",
+    backgroundColor: "#000",
+    marginBottom: 5,
   },
   avatar: {
     width: 50,
     height: 50,
     borderRadius: 25,
-    marginRight: 10,
+    marginRight: 15,
   },
   textContainer: {
     flex: 1,
@@ -48,20 +51,27 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 5,
+    alignItems: "center",
   },
   name: {
     fontWeight: "bold",
     fontSize: 16,
-    color: "white",
+    color: "#fff",
   },
   time: {
-    color: "#888",
+    color: "#bbb",
     fontSize: 12,
   },
   message: {
     fontSize: 14,
-    color: "white",
+    color: "#fff",
+    marginTop: 2,
+  },
+  checkIcon: {
+    alignSelf: "flex-end",
+    color: "#1E90FF",
+    fontSize: 12,
+    marginTop: 5,
   },
 });
 
